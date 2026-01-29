@@ -1,10 +1,5 @@
 ---
 sidebar_position: 1
-id: nodeinstall
-title: Shido node install
-description: How to install and configure your Shido node
-image: https://256x25.tech/img/256x25.jpg
-slug: /docs/category/shido
 ---
 
 

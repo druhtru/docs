@@ -10,7 +10,8 @@ sidebar_position: 5
 ```bash
 # Stop node
 sudo systemctl stop shidod
-
+```
+```bash
 # Removing the old version
 sudo rm /usr/local/bin/shidod
 ```
@@ -46,39 +47,26 @@ sudo systemctl restart shidod && sudo journalctl -u shidod -f --no-hostname -o c
 ```bash
 # Stop node
 sudo systemctl stop shidod
-
-### Prepare binaries for Cosmovisor FOR <i class="fa-brands fa-ubuntu"></i> UBUNTU 20.04 (in some cases must be used with sudo)
-```bash
-
-cd $HOME
-
-mkdir -p $HOME/.shidod/cosmovisor/upgrades/tera/bin
-
-curl -L -o shidod https://github.com/ShidoGlobal/shidochain-tera-upgrade/releases/download/tera/shidod
-
-sudo mv shidod $HOME/.shidod/cosmovisor/upgrades/tera/bin
-
-sudo chmod +x $HOME/.shidod/cosmovisor/upgrades/tera/bin/shidod
-
-rm -rf shidod
-
 ```
 
-### Prepare binaries for Cosmovisor FOR <i class="fa-brands fa-ubuntu"></i> UBUNTU 22.04/24 (in some cases must be used with sudo)
+# Prepare binaries for Cosmovisor FOR <i class="fa-brands fa-ubuntu"></i> UBUNTU 20.04 (in some cases must be used with sudo)
 ```bash
-
 cd $HOME
-
 mkdir -p $HOME/.shidod/cosmovisor/upgrades/tera/bin
-
-curl -L -o shidod https://github.com/ShidoGlobal/shidochain-tera-upgrade/releases/download/ubuntu24.04/shidod
-
-sudo cp shidod $HOME/.shidod/cosmovisor/upgrades/tera/bin
-
+curl -L -o shidod https://github.com/ShidoGlobal/shidochain-tera-upgrade/releases/download/tera/shidod
+sudo mv shidod $HOME/.shidod/cosmovisor/upgrades/tera/bin
 sudo chmod +x $HOME/.shidod/cosmovisor/upgrades/tera/bin/shidod
-
 rm -rf shidod
+```
 
+# Prepare binaries for Cosmovisor FOR <i class="fa-brands fa-ubuntu"></i> UBUNTU 22.04/24 (in some cases must be used with sudo)
+```bash
+cd $HOME
+mkdir -p $HOME/.shidod/cosmovisor/upgrades/tera/bin
+curl -L -o shidod https://github.com/ShidoGlobal/shidochain-tera-upgrade/releases/download/ubuntu24.04/shidod
+sudo mv shidod $HOME/.shidod/cosmovisor/upgrades/tera/bin
+sudo chmod +x $HOME/.shidod/cosmovisor/upgrades/tera/bin/shidod
+rm -rf shidod
 ```
 
 ```bash
@@ -86,15 +74,14 @@ rm -rf shidod
 $HOME/.shidod/cosmovisor/upgrades/tera/bin/shidod version
 
 Output: 3.3.0
-
 ```
 :::note NOTE:
 Cosmovisor will automatically update your node when the update height is reached
 :::
 
 
-## Upgrade v3.2.0
-### `Height: 23500000`
+## Upgrade v3.2.0 / *Height: 23500000*
+### `Manual update`
 
 ```bash
 # Stop node
@@ -130,8 +117,8 @@ Output: 3.2.0
 sudo systemctl restart shidod && sudo journalctl -u shidod -f --no-hostname -o cat
 ```
 
-## Upgrade v3.1.0
-### `Height: 17400000`
+## Upgrade v3.1.0 / *Height: 17400000*
+### `Manual update`
 
 ```bash
 # Stop node
@@ -167,8 +154,8 @@ Output: 3.1.0
 sudo systemctl restart shidod && sudo journalctl -u shidod -f --no-hostname -o cat
 ```
 
-## Upgrade v3.0.0
-### `Height: 16850000`
+## Upgrade v3.0.0 / *Height: 16850000*
+### `Manual update`
 
 ```bash
 # Stop node
@@ -211,8 +198,8 @@ Output: 3.0.0
 sudo systemctl restart shidod && sudo journalctl -u shidod -f --no-hostname -o cat
 ```
 
-## Upgrade v2.0.0
-### `Height: 4303000`
+## Upgrade v2.0.0 / *Height: 4303000*
+### `Manual update`
 
 ```bash
 # Clone new binary

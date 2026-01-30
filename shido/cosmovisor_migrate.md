@@ -19,6 +19,11 @@ sudo systemctl stop shidod
 sudo systemctl disable shidod
 ```
 
+## Delete old service
+```bash
+sudo rm -r /etc/systemd/system/shidod.service
+```
+
 ## Delete shido binary
 ```bash
 sudo rm -r /usr/local/bin/shidod

@@ -32,20 +32,49 @@ source .bash_profile
 Choose binary depending on your version of <i class="fa-brands fa-ubuntu"></i> Ubuntu **22.04/24+** or **20.04**
 :::
 
-### Download & copy binary FOR <i class="fa-brands fa-ubuntu"></i> UBUNTU 20.04 (in some cases must be used with sudo)
+### Install Cosmovisor 
 ```bash
-cd $HOME
-curl -L -o shidod https://github.com/ShidoGlobal/mainnet-enso-upgrade/releases/download/ubuntu20.04/shidod
-sudo cp shidod /usr/local/bin/
-sudo chmod +x /usr/local/bin/shidod
+go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@latest
 ```
 
-### Download & copy binary FOR <i class="fa-brands fa-ubuntu"></i> UBUNTU 22.04/24 (in some cases must be used with sudo)
+### Prepare binaries for Cosmovisor FOR <i class="fa-brands fa-ubuntu"></i> UBUNTU 20.04 (in some cases must be used with sudo)
 ```bash
+
 cd $HOME
-curl -L -o shidod https://github.com/ShidoGlobal/mainnet-enso-upgrade/releases/download/ubuntu22.04/shidod
-sudo cp shidod /usr/local/bin/
-sudo chmod +x /usr/local/bin/shidod
+
+mkdir -p $HOME/.shidod/cosmovisor/genesis/bin
+
+curl -L -o shidod https://github.com/ShidoGlobal/shidochain-tera-upgrade/releases/download/tera/shidod
+
+sudo cp shidod $HOME/.shidod/cosmovisor/genesis/bin/
+
+sudo chmod +x $HOME/.shidod/cosmovisor/genesis/bin/shidod
+
+rm -rf shidod
+
+```
+
+### Prepare binaries for Cosmovisor FOR <i class="fa-brands fa-ubuntu"></i> UBUNTU 22.04/24 (in some cases must be used with sudo)
+```bash
+
+cd $HOME
+
+mkdir -p $HOME/.shidod/cosmovisor/genesis/bin
+
+curl -L -o shidod https://github.com/ShidoGlobal/shidochain-tera-upgrade/releases/download/ubuntu24.04/shidod
+
+sudo cp shidod $HOME/.shidod/cosmovisor/genesis/bin/
+
+sudo chmod +x $HOME/.shidod/cosmovisor/genesis/bin/shidod
+
+rm -rf shidod
+
+```
+
+### Create application symlinks
+```bash
+ln -s $HOME/.shidod/cosmovisor/genesis $HOME/.shidod/cosmovisor/current -f
+sudo ln -s $HOME/.shidod/cosmovisor/current/bin/sedashidodd /usr/local/bin/shidod -f
 ```
 
 ### Download WASM
@@ -108,10 +137,12 @@ Description=Shido node service
 After=network-online.target
 [Service]
 User=$USER
-ExecStart=/usr/local/bin/shidod start
+ExecStart=$(which cosmovisor) run start
 Restart=on-failure
 RestartSec=10
-LimitNOFILE=4096
+LimitNOFILE=65535
+Environment="DAEMON_HOME=$HOME/.shidod"
+Environment="DAEMON_NAME=shidod"
 [Install]
 WantedBy=multi-user.target
 EOF

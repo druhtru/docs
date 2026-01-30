@@ -2,7 +2,11 @@
 sidebar_position: 2
 ---
 
-# Instructions for installing cosmovisor on an already running node
+# Cosmovisor
+
+:::warning IMPORTANT:
+Instructions for installing cosmovisor on an already running node
+:::
 
 ## Install cosmovisor
 ```bash

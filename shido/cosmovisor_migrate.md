@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Cosmovisor
 
-:::warning IMPORTANT:
+:::note IMPORTANT:
 Instructions for installing cosmovisor on an already running node
 :::
 
@@ -13,7 +13,7 @@ Instructions for installing cosmovisor on an already running node
 go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@latest
 ```
 
-## Stop your node and disavle service
+## Stop your node and disable service
 ```bash
 sudo systemctl stop shidod
 sudo systemctl disable shidod
@@ -96,4 +96,4 @@ sudo journalctl -u shidod -f --no-hostname -o cat
 
 ## Future node updates
 
-- You will only need to download the binary file in "$HOME/.shidod/cosmovisor/upgrades/*Upgrade*/bin" and cosmovisor will automatically update your node when the update height is reached
+- You will only need to download the binary file in <span style={{ color: 'orange' }}>"$HOME/.shidod/cosmovisor/upgrades/*upgrade_name*/bin"</span> and cosmovisor will automatically update your node when the update height is reached

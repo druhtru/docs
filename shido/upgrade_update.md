@@ -4,6 +4,81 @@ sidebar_position: 5
 
 # Upgrade
 
+## Upgrade v3.3.1 / *Height: 27750000*
+### `Manual update`
+
+```bash
+# Stop node
+sudo systemctl stop shidod
+```
+```bash
+# Removing the old version
+sudo rm /usr/local/bin/shidod
+```
+
+# Download & copy binary FOR <i class="fa-brands fa-ubuntu"></i> **UBUNTU 20.04**  (in some cases must be used with **sudo**)
+```bash
+cd $HOME
+curl -L -o shidod https://github.com/ShidoGlobal/shido-upgrade-v3.3.1/releases/download/v3.3.1/shidod
+sudo mv shidod /usr/local/bin/
+sudo chmod +x /usr/local/bin/shidod
+```
+
+# Download & copy binary FOR <i class="fa-brands fa-ubuntu"></i> **UBUNTU 22.04/24** (in some cases must be used with **sudo**).
+```bash
+cd $HOME
+curl -L -o shidod https://github.com/ShidoGlobal/shido-upgrade-v3.3.1/releases/download/v3.3.1/shidod
+sudo mv shidod /usr/local/bin/
+sudo chmod +x /usr/local/bin/shidod
+```
+
+```bash
+# Check if the node has been updated
+shidod version
+
+Output: 3.3.1
+
+# Start node & check logs
+sudo systemctl restart shidod && sudo journalctl -u shidod -f --no-hostname -o cat
+```
+
+### `Cosmovisor`
+
+```bash
+# Stop node
+sudo systemctl stop shidod
+```
+
+# Prepare binaries for Cosmovisor FOR <i class="fa-brands fa-ubuntu"></i> UBUNTU 20.04 (in some cases must be used with sudo)
+```bash
+cd $HOME
+mkdir -p $HOME/.shidod/cosmovisor/upgrades/v3.3.1/bin
+curl -L -o shidod https://github.com/ShidoGlobal/shido-upgrade-v3.3.1/releases/download/v3.3.1/shidod
+sudo mv shidod $HOME/.shidod/cosmovisor/upgrades/v3.3.1/bin
+sudo chmod +x $HOME/.shidod/cosmovisor/upgrades/v3.3.1/bin/shidod
+rm -rf shidod
+```
+
+# Prepare binaries for Cosmovisor FOR <i class="fa-brands fa-ubuntu"></i> UBUNTU 22.04/24 (in some cases must be used with sudo)
+```bash
+cd $HOME
+mkdir -p $HOME/.shidod/cosmovisor/upgrades/v3.3.1/bin
+curl -L -o shidod https://github.com/ShidoGlobal/shido-upgrade-v3.3.1/releases/download/v3.3.1/shidod
+sudo mv shidod $HOME/.shidod/cosmovisor/upgrades/v3.3.1/bin
+sudo chmod +x $HOME/.shidod/cosmovisor/upgrades/v3.3.1/bin/shidod
+rm -rf shidod
+```
+
+```bash
+# Check binary version
+$HOME/.shidod/cosmovisor/upgrades/tera/bin/shidod version
+
+Output: 3.3.1
+```
+:::note NOTE:
+Cosmovisor will automatically update your node when the update height is reached
+:::
+
 ## Upgrade v3.3.0 (Tera) / *Height: 27200000*
 ### `Manual update`
 

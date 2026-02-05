@@ -71,7 +71,7 @@ rm -rf shidod
 
 ```bash
 # Check binary version
-$HOME/.shidod/cosmovisor/upgrades/tera/bin/shidod version
+$HOME/.shidod/cosmovisor/upgrades/v3.3.1/bin/shidod version
 
 Output: 3.3.1
 ```
